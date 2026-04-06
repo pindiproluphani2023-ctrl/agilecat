@@ -7,6 +7,12 @@ pipeline {
   }
 
   stages {
+    stage('Debug - list files') {
+      steps {
+        bat 'dir'
+        bat 'dir MULTIPLICATION-APP'
+      }
+    }
     stage('Checkout') {
       steps {
         checkout scm
