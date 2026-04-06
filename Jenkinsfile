@@ -2,7 +2,7 @@ pipeline {
   agent any
 
   environment {
-    APP_DIR = "multiplication-app"
+    APP_DIR = "."
     IMAGE_NAME = "multiplication-app"
     IMAGE_TAG  = "1.0"
   }
