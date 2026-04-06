@@ -19,4 +19,10 @@ public class AppTest {
   void multiply_negativeNumbers() {
     assertEquals(-10, App.multiply(-2, 5));
   }
+
+  @Test
+  void multiply_twoNegatives() {
+    assertEquals(6, App.multiply(-2, -3));
+  }
 }
+
