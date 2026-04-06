@@ -2,7 +2,6 @@ pipeline {
   agent any
 
   environment {
-    APP_DIR = "MULTIPLICATION-APP"
     IMAGE_NAME = "multiplication-app"
     IMAGE_TAG  = "1.0"
   }
@@ -16,7 +15,7 @@ pipeline {
 
     stage('Build') {
       steps {
-        dir(APP_DIR) {
+        dir('MULTIPLICATION-APP') {
           bat 'mvn -B -DskipTests clean package'
         }
       }
@@ -24,13 +23,13 @@ pipeline {
 
     stage('Test') {
       steps {
-        dir(APP_DIR) {
+        dir('MULTIPLICATION-APP') {
           bat 'mvn -B test'
         }
       }
       post {
         always {
-          dir(APP_DIR) {
+          dir('MULTIPLICATION-APP') {
             junit 'target/surefire-reports/*.xml'
           }
         }
@@ -39,7 +38,7 @@ pipeline {
 
     stage('Docker Build') {
       steps {
-        dir(APP_DIR) {
+        dir('MULTIPLICATION-APP') {
           bat 'docker version'
           bat "docker build -t %IMAGE_NAME%:%IMAGE_TAG% ."
         }
